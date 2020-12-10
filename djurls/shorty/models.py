@@ -23,6 +23,6 @@ class ShortURL(models.Model):
     def short_key(self):
         return int_to_custom_base(self.pk)
 
-    def mark_accessed(self):
+    def increment_accessed(self):
         self.times_accessed = F("times_accessed") + 1
         self.save()

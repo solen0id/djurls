@@ -14,7 +14,11 @@ ALPHABET = "".join(ALPHABET_LIST)
 
 
 def int_to_custom_base(number: int, alphabet: str = ALPHABET) -> str:
-    # Encodes a given a positive integer in a custom alphabet
+    """
+    Encodes a given a positive integer in a custom alphabet.
+    The base is will be the length of the provided alphabet.
+    E.g. int_to_custom_base(100, 'abc') -> 'bacab'
+    """
     base = len(alphabet)
     result = ""
 
