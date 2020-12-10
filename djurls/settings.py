@@ -10,7 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import random
+import string
 from pathlib import Path
+
+# We shuffle our alphabet to make it a bit harder to guess the short url reference that
+# will be created next. We use a random seed to shuffle our alphabet in a reproducible
+# fashion, so a number translates to the same encoded string even after the webserver
+# restarts.
+ALPHABET_LIST = list(string.ascii_letters + string.digits)
+random.Random(42).shuffle(ALPHABET_LIST)
+ALPHABET = "".join(ALPHABET_LIST)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

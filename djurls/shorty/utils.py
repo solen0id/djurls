@@ -1,19 +1,7 @@
-import random
-import string
-
-# We shuffle our alphabet to make it a bit harder to guess the short url reference that
-# will be created next. We use a random seed to shuffle our alphabet in a reproducible
-# fashion, so a number translates to the same encoded string even after the webserver
-# restarts.
-random.seed(42)
-
-ALPHABET_LIST = list(string.ascii_letters + string.digits)
-random.shuffle(ALPHABET_LIST)
-
-ALPHABET = "".join(ALPHABET_LIST)
+from django.conf import settings
 
 
-def int_to_custom_base(number: int, alphabet: str = ALPHABET) -> str:
+def int_to_custom_base(number: int, alphabet: str = settings.ALPHABET) -> str:
     """
     Encodes a given a positive integer in a custom alphabet.
     The base is will be the length of the provided alphabet.
