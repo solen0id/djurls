@@ -15,5 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from shorty import views
 
-urlpatterns = [path("admin/", admin.site.urls)]
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/urls/", views.ShortURLListCreateAPI.as_view(), name="url_list_create"),
+]

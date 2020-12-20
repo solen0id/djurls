@@ -2,8 +2,7 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import F
-
-from djurls.shorty.utils import encode_custom_base
+from shorty.utils import encode_custom_base
 
 
 class User(AbstractUser):
