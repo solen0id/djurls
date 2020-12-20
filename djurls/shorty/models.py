@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import F
 
-from djurls.shorty.utils import int_to_custom_base
+from djurls.shorty.utils import encode_custom_base
 
 
 class User(AbstractUser):
@@ -21,7 +21,7 @@ class ShortURL(models.Model):
 
     @property
     def short_key(self):
-        return int_to_custom_base(self.pk)
+        return encode_custom_base(self.pk)
 
     def increment_accessed(self):
         self.times_accessed = F("times_accessed") + 1
