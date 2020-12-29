@@ -30,13 +30,8 @@ def decode_custom_base(encoded_number: str, alphabet: str = settings.ALPHABET) -
     base = len(alphabet)
     result = 0
 
-    # add padding to the encoded string so the math works out
-    while len(encoded_number) < len(alphabet):
-        encoded_number = f"{alphabet[0]}{encoded_number}"
-
-    for idx, char in enumerate(encoded_number):
+    for power, char in enumerate(reversed(encoded_number)):
         char_val = alphabet.index(char)
-        power = len(encoded_number) - idx - 1
         result += (base ** power) * char_val
 
     return result
