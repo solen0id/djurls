@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import RedirectView
-from shorty import views
+
+from djurls.shorty import views
 
 urlpatterns = [
     path("", RedirectView.as_view(pattern_name="url_list_create")),
