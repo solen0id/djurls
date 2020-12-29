@@ -1,7 +1,8 @@
 from rest_framework.generics import ListCreateAPIView
-from shorty.filters import IsAuthenticatedUserFilterBackend
-from shorty.models import ShortURL
-from shorty.serializers import ShortURLSerializer
+
+from djurls.shorty.filters import IsAuthenticatedUserFilterBackend
+from djurls.shorty.models import ShortURL
+from djurls.shorty.serializers import ShortURLSerializer
 
 
 class ShortURLListCreateAPI(ListCreateAPIView):

@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from shorty.models import ShortURL
+
+from djurls.shorty.models import ShortURL
 
 
 class ShortURLSerializer(serializers.ModelSerializer):
