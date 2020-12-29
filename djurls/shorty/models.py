@@ -17,7 +17,7 @@ class ShortURL(models.Model):
     )
     times_accessed = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-    accessed_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+    accessed_at = models.DateTimeField(blank=True, null=True)
 
     @property
     def short_key(self):
