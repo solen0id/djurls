@@ -44,8 +44,5 @@ def test_decode_custom_base(encoded_number, alphabet, expected_result):
 def test_encode_then_decode_returns_original_number(number):
     encoded = encode_custom_base(number)
     decoded = decode_custom_base(encoded)
-    print(f"{number=}")
-    print(f"{encoded=}")
-    print(f"{decoded=}")
 
     assert decoded == number
