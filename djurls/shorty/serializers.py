@@ -4,6 +4,8 @@ from djurls.shorty.models import ShortURL
 
 
 class ShortURLSerializer(serializers.ModelSerializer):
+    author = serializers.CharField(source="author.username", read_only=True)
+
     class Meta:
         model = ShortURL
         fields = "__all__"
