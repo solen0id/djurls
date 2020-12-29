@@ -26,3 +26,9 @@ class ShortURL(models.Model):
     def increment_accessed(self):
         self.times_accessed = F("times_accessed") + 1
         self.save()
+
+    def __repr__(self):
+        return (
+            f"{self.__class__.__name__}(url={self.url}, author={self.author}, "
+            f"times_accessed={self.times_accessed})"
+        )
