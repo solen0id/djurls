@@ -4,12 +4,21 @@ from djurls.shorty.models import ShortURL
 
 
 class ShortURLSerializer(serializers.ModelSerializer):
-    author = serializers.CharField(source="author.username", read_only=True)
+    author = serializers.CharField(
+        source="author.username", allow_blank=True, read_only=True
+    )
+    short_key = serializers.CharField(read_only=True)
 
     class Meta:
         model = ShortURL
         fields = "__all__"
-        read_only_fields = ("author", "accessed_at", "created_at", "times_accessed")
+        read_only_fields = (
+            "accessed_at",
+            "author",
+            "created_at",
+            "short_key",
+            "times_accessed",
+        )
 
     def create(self, validated_data):
         request = self.context["request"]

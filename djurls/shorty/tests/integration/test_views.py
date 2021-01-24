@@ -116,10 +116,11 @@ def test_create_new_short_url_construction(api_client, url_list_create, default_
 
     response_json = api_client.post(url_list_create, data=data, format="json").json()
 
-    assert response_json.get("url") == default_url
-    assert response_json.get("times_accessed") == 0
     assert response_json.get("accessed_at") is None
     assert response_json.get("author") is None
+    assert response_json.get("short_key")
+    assert response_json.get("times_accessed") == 0
+    assert response_json.get("url") == default_url
     assert timestamp_to_tz_aware_object(response_json.get("created_at")) > before_create
 
 
