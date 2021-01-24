@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import pytest
 from django.urls import reverse_lazy
 from django.utils import timezone
@@ -76,3 +74,19 @@ def test_redirect_preserves_query_params(api_client, redirect_url, default_url):
 
     assert response.status_code == 302
     assert response.url == f"{default_url}?{query_params}"
+
+
+@pytest.mark.django_db
+def test_redirect_increments_accessed_counter_and_time(
+    api_client, redirect_url, default_url
+):
+    short_url = ShortURL.objects.create(url=default_url)
+    redirect_url = redirect_url(short_key=short_url.short_key)
+
+    before_redirect = timezone.now()
+    api_client.get(redirect_url)
+
+    short_url.refresh_from_db()
+
+    assert short_url.times_accessed == 1
+    assert short_url.accessed_at > before_redirect

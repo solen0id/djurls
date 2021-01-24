@@ -31,6 +31,7 @@ class ShortURLRedirectView(RetrieveAPIView):
 
     def retrieve(self, request: Request, *args, **kwargs) -> HttpResponseRedirect:
         instance = self.get_object()
+        instance.increment_accessed()
 
         # We pass along any query parameters from the request
         url = instance.url

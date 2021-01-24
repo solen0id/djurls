@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import F
+from django.utils import timezone
 
 from djurls.shorty.utils import encode_custom_base
 
@@ -25,6 +26,7 @@ class ShortURL(models.Model):
 
     def increment_accessed(self):
         self.times_accessed = F("times_accessed") + 1
+        self.accessed_at = timezone.now()
         self.save()
 
     def __repr__(self):
