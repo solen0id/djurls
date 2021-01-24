@@ -21,6 +21,7 @@ from djurls.shorty import views
 
 urlpatterns = [
     path("", RedirectView.as_view(pattern_name="url_list_create")),
+    path("r/<short_key>", views.ShortURLRedirectView.as_view(), name="redirect"),
     path("admin/", admin.site.urls),
     path("api/urls/", views.ShortURLListCreateAPI.as_view(), name="url_list_create"),
 ]
