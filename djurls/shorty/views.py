@@ -20,7 +20,7 @@ class ShortURLListCreateAPI(ListCreateAPIView):
 class ShortURLRedirectView(RetrieveAPIView):
     queryset = ShortURL.objects.all()
 
-    def get_object(self):
+    def get_object(self) -> ShortURL:
         queryset = self.filter_queryset(self.get_queryset())
 
         short_key = self.kwargs.get("short_key")

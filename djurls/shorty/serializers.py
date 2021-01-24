@@ -20,7 +20,7 @@ class ShortURLSerializer(serializers.ModelSerializer):
             "times_accessed",
         )
 
-    def create(self, validated_data):
+    def create(self, validated_data: dict) -> ShortURL:
         request = self.context["request"]
 
         if request.user.is_authenticated:
